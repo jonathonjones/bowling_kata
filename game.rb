@@ -7,9 +7,8 @@ class Game
   end
 
   def roll(pins_down)
-    @frames << [10] and return if pins_down == 10
     @current_frame << pins_down
-    if @current_frame.size == 2
+    if @current_frame.size == 2 || pins_down == 10
       @frames << @current_frame
       @current_frame = Frame.new
     end
