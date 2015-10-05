@@ -19,7 +19,9 @@ class Game
     score = 0
     10.times do |frame_index|
       if @frames[frame_index] == [10] #strike
-        score += 10 + @frames[frame_index + 1][0] + @frames[frame_index + 1][1]
+        first = @frames[frame_index + 1][0]
+        second = first == 10 ? @frames[frame_index + 2][0] : @frames[frame_index + 1][1]
+        score += 10 + first + second
       elsif spare?(frame_index)
         score += 10 + @frames[frame_index + 1][0]
       else
