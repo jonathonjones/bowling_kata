@@ -1,7 +1,5 @@
 # Represent a game of bowling
 class Game
-  attr_reader :score
-
   def initialize
     @score = 0
     @rolls = []
@@ -10,6 +8,15 @@ class Game
 
   def roll(pins_down)
     @score += pins_down
-    @rolls[@current_roll+=1] = pins_down
+    @rolls[@current_roll] = pins_down
+    @current_roll += 1
+  end
+
+  def score
+    score = 0
+    @rolls.each do |roll|
+      score += roll
+    end
+    score
   end
 end
