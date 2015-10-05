@@ -1,9 +1,12 @@
 # Represent a game of bowling
 class Game
-  def roll(pins_down)
+  attr_reader :score
+
+  def initialize
+    @score = 0
   end
 
-  def score
-    0
+  def roll(pins_down)
+    @score += pins_down
   end
 end
