@@ -3,7 +3,7 @@ class Game
   def initialize
     @frames = []
     @current_roll = 0
-    @current_frame = []
+    @current_frame = Frame.new
   end
 
   def roll(pins_down)
@@ -51,5 +51,9 @@ class Game
     first = @frames[frame_index][0]
     second = @frames[frame_index][1]
     first + second
+  end
+
+  class Frame < Array
+
   end
 end
