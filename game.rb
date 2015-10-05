@@ -15,7 +15,11 @@ class Game
     10.times do |frame|
       first = @rolls[2*frame]
       second = @rolls[2*frame + 1]
-      score += first + second
+      if first + second == 10 #spare
+        score += 10 + @rolls[2*frame + 2]
+      else
+        score += first + second
+      end
     end
     score
   end
