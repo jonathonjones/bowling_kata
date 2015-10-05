@@ -34,4 +34,9 @@ describe Game do
     roll_many(16,0)
     expect(subject.score).to eq 24
   end
+
+  it 'should score a perfect game' do
+    roll_many(12, 10)
+    expect(subject.score).to eq 300
+  end
 end
