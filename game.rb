@@ -11,7 +11,7 @@ class Game
     @current_frame << pins_down
     if @current_frame.size == 2
       @frames << @current_frame
-      @current_frame = []
+      @current_frame = Frame.new
     end
   end
 
