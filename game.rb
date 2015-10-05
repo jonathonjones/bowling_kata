@@ -16,12 +16,16 @@ class Game
       frame_index = frame * 2
       first = @rolls[frame_index]
       second = @rolls[frame_index + 1]
-      if first + second == 10 #spare
+      if spare?(frame_index)
         score += 10 + @rolls[frame_index + 2]
       else
         score += first + second
       end
     end
     score
+  end
+
+  def spare?(frame_index)
+    @rolls[frame_index] + @rolls[frame_index + 1] == 10
   end
 end
