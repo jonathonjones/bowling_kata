@@ -2,7 +2,9 @@ require './game'
 
 describe Game do
   it 'should score 0 for all gutterball game' do
-    20.times { subject.roll(0) }
+    n = 20
+    pins = 0
+    n.times { subject.roll(pins) }
     expect(subject.score).to eq 0
   end
 
