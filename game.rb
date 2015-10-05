@@ -22,21 +22,18 @@ class Game
   end
 
   def score_for_frame(frame_index)
-    if strike?(frame_index)
+    frame = frame_from_index(frame_index)
+    if frame.strike?
       10 + strike_bonus(frame_index)
-    elsif spare?(frame_index)
+    elsif frame.spare?
       10 + spare_bonus(frame_index)
     else
       sum_of_balls_in_frame(frame_index)
     end
   end
 
-  def spare?(frame_index)
-    @frames[frame_index].spare?
-  end
-
-  def strike?(frame_index)
-    @frames[frame_index].strike?
+  def frame_from_index(frame_index)
+    @frames[frame_index]
   end
 
   def strike_bonus(frame_index)
@@ -53,6 +50,7 @@ class Game
     @frames[frame_index].sum
   end
 
+  # A frame has two rolls. There are ten frames (plus a possible bonus) in each game.
   class Frame < Array
     def strike?
       first == 10
