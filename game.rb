@@ -33,7 +33,7 @@ class Game
   end
 
   def strike?(frame_index)
-    @frames[frame_index][0] == 10
+    @frames[frame_index].strike?
   end
 
   def strike_bonus(frame_index)
@@ -53,6 +53,8 @@ class Game
   end
 
   class Frame < Array
-
+    def strike?
+      first == 10
+    end
   end
 end
