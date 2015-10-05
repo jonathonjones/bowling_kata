@@ -16,15 +16,19 @@ class Game
   def score
     score = 0
     10.times do |frame_index|
-      if strike?(frame_index)
-        score += 10 + strike_bonus(frame_index)
-      elsif spare?(frame_index)
-        score += 10 + spare_bonus(frame_index)
-      else
-        score += sum_of_balls_in_frame(frame_index)
-      end
+      score += score_for_frame(frame_index)
     end
     score
+  end
+
+  def score_for_frame(frame_index)
+    if strike?(frame_index)
+      10 + strike_bonus(frame_index)
+    elsif spare?(frame_index)
+      10 + spare_bonus(frame_index)
+    else
+      sum_of_balls_in_frame(frame_index)
+    end
   end
 
   def spare?(frame_index)
