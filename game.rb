@@ -7,10 +7,9 @@ class Game
 
   def roll(pins_down)
     @current_frame << pins_down
-    if @current_frame.size == 2 || pins_down == 10
-      @frames << @current_frame
-      @current_frame = Frame.new
-    end
+    return unless  @current_frame.size == 2 || pins_down == 10
+    @frames << @current_frame
+    @current_frame = Frame.new
   end
 
   def score
@@ -50,7 +49,7 @@ class Game
     @frames[frame_index].sum
   end
 
-  # A frame has two rolls. There are ten frames (plus a possible bonus) in each game.
+  # A frame has two rolls. There are ten normal frames (plus bonus).
   class Frame < Array
     def strike?
       first == 10
