@@ -14,7 +14,9 @@ class Game
     score = 0
     10.times do |frame|
       frame_index = frame * 2
-      if spare?(frame_index)
+      if @rolls[frame_index] == 10 #strike
+        score += 10 + @rolls[frame_index + 1] + @rolls[frame_index + 2]
+      elsif spare?(frame_index)
         score += 10 + @rolls[frame_index + 2]
       else
         first = @rolls[frame_index]
