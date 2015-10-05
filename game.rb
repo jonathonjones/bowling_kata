@@ -29,7 +29,7 @@ class Game
   end
 
   def spare?(frame_index)
-    sum_of_balls_in_frame(frame_index) == 10
+    @frames[frame_index].spare?
   end
 
   def strike?(frame_index)
@@ -57,6 +57,10 @@ class Game
 
     def sum
       inject(&:+)
+    end
+
+    def spare?
+      sum == 10
     end
   end
 end
