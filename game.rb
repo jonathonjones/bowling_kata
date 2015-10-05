@@ -37,7 +37,7 @@ class Game
 
   def strike_bonus(frame_index)
     first = @frames[frame_index + 1][0]
-    second = first == 10 ? @frames[frame_index + 2][0] : @frames[frame_index + 1][1]
+    second = @frames[frame_index + 1][1] || @frames[frame_index + 2][0]
     first + second
   end
 
