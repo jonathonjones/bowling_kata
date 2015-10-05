@@ -47,14 +47,16 @@ class Game
   end
 
   def sum_of_balls_in_frame(frame_index)
-    first = @frames[frame_index][0]
-    second = @frames[frame_index][1]
-    first + second
+    @frames[frame_index].sum
   end
 
   class Frame < Array
     def strike?
       first == 10
+    end
+
+    def sum
+      inject(&:+)
     end
   end
 end
