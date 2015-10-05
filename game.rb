@@ -14,11 +14,11 @@ class Game
     score = 0
     10.times do |frame|
       frame_index = frame * 2
-      first = @rolls[frame_index]
-      second = @rolls[frame_index + 1]
       if spare?(frame_index)
         score += 10 + @rolls[frame_index + 2]
       else
+        first = @rolls[frame_index]
+        second = @rolls[frame_index + 1]
         score += first + second
       end
     end
