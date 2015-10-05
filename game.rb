@@ -18,7 +18,7 @@ class Game
   def score
     score = 0
     10.times do |frame_index|
-      if @frames[frame_index] == [10] #strike
+      if strike?(frame_index)
         first = @frames[frame_index + 1][0]
         second = first == 10 ? @frames[frame_index + 2][0] : @frames[frame_index + 1][1]
         score += 10 + first + second
@@ -35,5 +35,9 @@ class Game
 
   def spare?(frame_index)
     @frames[frame_index][0] + @frames[frame_index][1] == 10
+  end
+
+  def strike?(frame_index)
+    @frames[frame_index][0] == 10
   end
 end
