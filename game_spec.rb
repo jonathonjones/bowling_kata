@@ -5,6 +5,11 @@ describe Game do
     n.times { subject.roll(pins) }
   end
 
+  def roll_spare
+    subject.roll(5)
+    subject.roll(5)
+  end
+
   it 'should score 0 for all gutterball game' do
     roll_many(20, 0)
     expect(subject.score).to eq 0
@@ -16,8 +21,7 @@ describe Game do
   end
 
   it 'should score a spare correctly' do
-    subject.roll(5)
-    subject.roll(5)
+    roll_spare
     subject.roll(3)
     roll_many(17, 0)
     expect(subject.score).to eq 16
