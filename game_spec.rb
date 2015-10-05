@@ -7,7 +7,7 @@ describe Game do
   end
 
   it 'should score 20 when one pin knocked down each time' do
-    20.times { subject.roll(1) }
+    roll_many(20, 1)
     expect(subject.score).to eq 20
   end
 
