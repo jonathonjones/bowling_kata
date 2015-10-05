@@ -23,9 +23,7 @@ class Game
       elsif spare?(frame_index)
         score += 10 + spare_bonus(frame_index)
       else
-        first = @frames[frame_index][0]
-        second = @frames[frame_index][1]
-        score += first + second
+        score += sum_of_balls_in_frame(frame_index)
       end
     end
     score
@@ -47,5 +45,11 @@ class Game
 
   def spare_bonus(frame_index)
     @frames[frame_index + 1][0]
+  end
+
+  def sum_of_balls_in_frame(frame_index)
+    first = @frames[frame_index][0]
+    second = @frames[frame_index][1]
+    first + second
   end
 end
