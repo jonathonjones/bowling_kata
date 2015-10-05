@@ -12,8 +12,10 @@ class Game
 
   def score
     score = 0
-    @rolls.each do |roll|
-      score += roll
+    10.times do |frame|
+      first = @rolls[2*frame]
+      second = @rolls[2*frame + 1]
+      score += first + second
     end
     score
   end
