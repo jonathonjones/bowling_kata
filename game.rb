@@ -1,26 +1,30 @@
 # Represent a game of bowling
 class Game
   def initialize
-    @rolls = []
+    @frames = []
     @current_roll = 0
+    @current_frame = []
   end
 
   def roll(pins_down)
-    @rolls[@current_roll] = pins_down
-    @current_roll += 1
+    @frames << [10] and return if pins_down == 10
+    @current_frame << pins_down
+    if @current_frame.size == 2
+      @frames << @current_frame
+      @current_frame = []
+    end
   end
 
   def score
     score = 0
-    10.times do |frame|
-      frame_index = frame * 2
-      if @rolls[frame_index] == 10 #strike
-        score += 10 + @rolls[frame_index + 1] + @rolls[frame_index + 2]
+    10.times do |frame_index|
+      if @frames[frame_index] == [10] #strike
+        score += 10 + @frames[frame_index + 1][0] + @frames[frame_index + 1][1]
       elsif spare?(frame_index)
-        score += 10 + @rolls[frame_index + 2]
+        score += 10 + @frames[frame_index + 1][0]
       else
-        first = @rolls[frame_index]
-        second = @rolls[frame_index + 1]
+        first = @frames[frame_index][0]
+        second = @frames[frame_index][1]
         score += first + second
       end
     end
@@ -28,6 +32,6 @@ class Game
   end
 
   def spare?(frame_index)
-    @rolls[frame_index] + @rolls[frame_index + 1] == 10
+    @frames[frame_index][0] + @frames[frame_index][1] == 10
   end
 end
