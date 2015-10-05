@@ -26,4 +26,12 @@ describe Game do
     roll_many(17, 0)
     expect(subject.score).to eq 16
   end
+
+  it 'should score a strike correctly' do
+    subject.roll(10) #strike
+    subject.roll(3)
+    subject.roll(4)
+    roll_many(16,0)
+    expect(subject.score).to eq 24
+  end
 end
