@@ -30,7 +30,7 @@ class Game
   end
 
   def spare?(frame_index)
-    @frames[frame_index][0] + @frames[frame_index][1] == 10
+    sum_of_balls_in_frame(frame_index) == 10
   end
 
   def strike?(frame_index)
