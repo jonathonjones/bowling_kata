@@ -2,7 +2,6 @@
 class Game
   def initialize
     @frames = []
-    @current_roll = 0
     @current_frame = Frame.new
   end
 
